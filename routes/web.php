@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Admins\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('login', [LoginController::class, 'index'])->name('auth');
+Route::post('login/auth', [LoginController::class, 'login'])->name('login');
+
+Route::middleware(['auth', 'web'])->group(function(){
+    Route::prefix('sys-admin')->group(function () {
+
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    });
 });
