@@ -21,6 +21,7 @@ use App\Http\Controllers\Admins\DashboardController;
 
 Route::get('login', [LoginController::class, 'index'])->name('auth');
 Route::post('login/auth', [LoginController::class, 'login'])->name('login');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'web'])->group(function(){
     Route::prefix('sys-admin')->group(function () {
