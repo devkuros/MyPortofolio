@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\Admins\DashboardController;
+use App\Http\Controllers\Admins\{
+    EducationController,
+    DashboardController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +26,11 @@ Route::get('login', [LoginController::class, 'index'])->name('auth');
 Route::post('login/auth', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::middleware(['auth', 'web'])->group(function(){
-    Route::prefix('sys-admin')->group(function () {
+Route::middleware(['auth', 'web'])->prefix('sys-admin')->group(function(){
 
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    });
+        // Education Menu
+        Route::resource('education', EducationController::class);
+
 });
