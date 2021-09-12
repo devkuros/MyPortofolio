@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admins\{
     EducationController,
-    DashboardController
+    DashboardController,
+    ExperienceController
 };
 
 /*
@@ -18,9 +19,9 @@ use App\Http\Controllers\Admins\{
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 Route::get('login', [LoginController::class, 'index'])->name('auth');
 Route::post('login/auth', [LoginController::class, 'login'])->name('login');
@@ -32,5 +33,7 @@ Route::middleware(['auth', 'web'])->prefix('sys-admin')->group(function(){
 
         // Education Menu
         Route::resource('education', EducationController::class);
+        // Experiance Menu
+        Route::resource('experience', ExperienceController::class);
 
 });
