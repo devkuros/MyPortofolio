@@ -5,7 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admins\{
     EducationController,
     DashboardController,
-    ExperienceController
+    ExperienceController,
+    UserController
 };
 
 /*
@@ -35,5 +36,9 @@ Route::middleware(['auth', 'web'])->prefix('sys-admin')->group(function(){
         Route::resource('education', EducationController::class);
         // Experiance Menu
         Route::resource('experience', ExperienceController::class);
+        // user
+        Route::get('user', [UserController::class, 'index'])->name('users.index');
+        Route::put('user/update/{id}', [UserController::class, 'update'])->name('users.update');
+        Route::patch('user/changepassword', [UserController::class, 'updatepassword'])->name('users.updatepassword');
 
 });

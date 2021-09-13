@@ -17,7 +17,7 @@
 
             <li class="nav-item dropdown user-profile-dropdown">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <img src="{{ asset('/upload/user/'. Auth::user()->avatar) }}" alt="avatar">
+                    <img src="{{ asset('/storage/user/'. Auth::user()->avatar) }}" alt="avatar">
                 </a>
                 <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                     <div class="">
