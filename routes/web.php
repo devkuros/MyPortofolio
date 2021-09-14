@@ -36,6 +36,8 @@ Route::middleware(['auth', 'web'])->prefix('sys-admin')->group(function(){
         Route::resource('education', EducationController::class);
         // Experiance Menu
         Route::resource('experience', ExperienceController::class);
+        // Dashboard
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         // user
         Route::get('user', [UserController::class, 'index'])->name('users.index');
         Route::put('user/update/{id}', [UserController::class, 'update'])->name('users.update');
