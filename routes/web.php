@@ -8,6 +8,7 @@ use App\Http\Controllers\Admins\{
     ExperienceController,
     UserController
 };
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,11 @@ use App\Http\Controllers\Admins\{
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('login', [LoginController::class, 'index'])->name('auth');
 Route::post('login/auth', [LoginController::class, 'login'])->name('login');
